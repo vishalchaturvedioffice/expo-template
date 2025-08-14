@@ -1,6 +1,8 @@
+import { useAppStore } from "@/store";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import FlashMessage from "react-native-flash-message";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { APIProvider } from "../api";
@@ -13,15 +15,22 @@ SplashScreen.setOptions({
 });
 
 export default function RootLayout() {
-  const isAuthenticated = true;
+  const [isReady, setIsReady] = useState(false);
+  const isAuthenticated = useAppStore((state) => state.isAuthenticated);
   useEffect(() => {
     // Hide splash screen after a short delay
     const hideSplash = async () => {
       await SplashScreen.hideAsync();
     };
+    hideSplash();
 
-    const timer = setTimeout(hideSplash, 1000);
-    return () => clearTimeout(timer);
+    const isReadyTimer = setTimeout(() => {
+      setIsReady(true);
+    }, 1000);
+
+    return () => {
+      clearTimeout(isReadyTimer);
+    };
   }, []);
 
   return (
@@ -33,7 +42,7 @@ export default function RootLayout() {
         <Stack.Protected guard={!isAuthenticated}>
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         </Stack.Protected>
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={!isReady}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         </Stack.Protected>
       </Stack>
@@ -46,6 +55,7 @@ function Providers({ children }: { children: React.ReactNode }) {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <KeyboardProvider>
         <APIProvider>{children}</APIProvider>
+        <FlashMessage position="top" />
       </KeyboardProvider>
     </GestureHandlerRootView>
   );
