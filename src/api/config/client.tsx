@@ -1,4 +1,4 @@
-import enVariables from "@/constants/enVariables";
+import enVariables from "@/constants/env-variables";
 import { useAppStore } from "@/store";
 import { showError } from "@/utils/helper-functions";
 import axios from "axios";
