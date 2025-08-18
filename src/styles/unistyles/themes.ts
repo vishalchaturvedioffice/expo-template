@@ -55,6 +55,24 @@ const opacity = {
   pressed: 0.6,
 };
 
+const fontWeight = {
+  thin: "100" as const,
+  extraLight: "200" as const,
+  light: "300" as const,
+  normal: "400" as const,
+  medium: "500" as const,
+};
+
+const fontFamily = {
+  poppins: {
+    regular: "Poppins-Regular",
+    medium: "Poppins-Medium",
+    bold: "Poppins-Bold",
+    extraBold: "Poppins-ExtraBold",
+    black: "Poppins-Black",
+  },
+};
+
 export const lightTheme = {
   colors: {
     // Primary colors
@@ -103,6 +121,8 @@ export const lightTheme = {
   fontSize,
   shadow,
   opacity,
+  fontWeight,
+  fontFamily,
 };
 
 export const darkTheme = {
@@ -153,6 +173,8 @@ export const darkTheme = {
   fontSize,
   shadow,
   opacity,
+  fontWeight,
+  fontFamily,
 };
 
 const appThemes: AppThemes = {
