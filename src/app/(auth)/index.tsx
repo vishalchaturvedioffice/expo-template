@@ -1,6 +1,7 @@
 // Configure Unistyles before creating any styles
 import { Button, Input } from "@/components";
-import '@/styles/unistyles/configure';
+import Icons from "@/constants/icons";
+import "@/styles/unistyles/configure";
 import React from "react";
 import { View } from "react-native";
 import { StyleSheet } from "react-native-unistyles";
@@ -8,6 +9,7 @@ import { StyleSheet } from "react-native-unistyles";
 const Page = () => {
   return (
     <View style={styles.container}>
+      <Icons.logo width={100} height={100} />
       <Input placeholder="Email" />
       <Input placeholder="Password" />
       <Button title="Login" size="md" variant="primary" onPress={() => {}} />

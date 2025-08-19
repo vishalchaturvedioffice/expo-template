@@ -25,6 +25,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "global.d.ts",
+    "react-native-svg.d.ts",
     "**/*.d.ts"
   ]
 }
