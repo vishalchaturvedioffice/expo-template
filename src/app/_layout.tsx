@@ -1,5 +1,8 @@
+// Configure Unistyles FIRST before any other imports
+import '@/styles/unistyles/configure';
+import { updateThemeFromStorage } from '@/styles/unistyles/unistyles';
+
 import { useAppStore } from "@/store";
-import '@/styles/unistyles/unistyles';
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
@@ -19,6 +22,9 @@ export default function RootLayout() {
   const [isReady, setIsReady] = useState(false);
   const isAuthenticated = useAppStore((state) => state.isAuthenticated);
   useEffect(() => {
+    // Update theme from storage after app is ready
+    updateThemeFromStorage();
+    
     // Hide splash screen after a short delay
     const hideSplash = async () => {
       await SplashScreen.hideAsync();

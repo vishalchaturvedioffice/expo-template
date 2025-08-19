@@ -1,16 +1,6 @@
-import { StyleSheet } from "react-native-unistyles";
+// Import the immediate configuration
+import "./configure";
 
-import { getItem } from "@/utils/storage";
-import { breakpoints } from "./breakpoints";
-import { appThemes } from "./themes";
-import type { AppThemes } from "./types";
+// Export the theme updater for later use
+export { updateThemeFromStorage } from "./configure";
 
-// Types are augmented in `src/typings/unistyles.d.ts`
-
-const preferred = getItem<keyof AppThemes>("preferredTheme") ?? "light";
-
-StyleSheet.configure({
-  settings: { initialTheme: preferred },
-  breakpoints,
-  themes: appThemes as AppThemes,
-});

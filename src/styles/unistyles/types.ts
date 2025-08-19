@@ -108,5 +108,5 @@ type AppThemes = {
   dark: Theme;
 };
 
-export type { AppBreakpoints, AppThemes, ThemeColors };
+export type { AppBreakpoints, AppThemes, Theme, ThemeColors };
 

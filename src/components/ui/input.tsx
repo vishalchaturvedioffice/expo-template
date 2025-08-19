@@ -1,4 +1,4 @@
-import { input_styles } from "@/styles";
+import input_styles from "@/styles/components/ui/input.styles";
 import React from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 import Text from "./text";

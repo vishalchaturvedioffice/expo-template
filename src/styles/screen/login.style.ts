@@ -1,3 +1,5 @@
+// Configure Unistyles before creating any styles
+import "@/styles/unistyles/configure";
 import { StyleSheet } from "react-native-unistyles";
 
 const styles = StyleSheet.create((theme) => ({
