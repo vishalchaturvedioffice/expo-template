@@ -13,7 +13,7 @@ import type { RecursiveKeyOf } from "./types";
 type DefaultLocale = typeof resources.en.translation;
 export type TxKeyPath = RecursiveKeyOf<DefaultLocale>;
 
-export const LOCAL = "local";
+export const LOCAL = "language";
 
 export const getLanguage = () => storage.getString(LOCAL); // 'Marc' getItem<Language | undefined>(LOCAL);
 
