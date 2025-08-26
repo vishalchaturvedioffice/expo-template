@@ -19,16 +19,19 @@ const Page = () => {
   return (
     <WrapperContainer style={styles.container}>
       <Icons.logo width={100} height={100} />
+      <Text weight="bold" variant="h1" color="primary">
+        {translate("welcome")}
+      </Text>
       <ControlledInput
         control={control}
         name="email"
         placeholder="Email"
-        rules={{ 
+        rules={{
           required: "Email is required",
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address"
-          }
+            message: "Invalid email address",
+          },
         }}
         label="Email"
         keyboardType="email-address"
@@ -38,24 +41,18 @@ const Page = () => {
         control={control}
         name="password"
         placeholder="Password"
-        rules={{ 
+        rules={{
           required: "Password is required",
           minLength: {
             value: 6,
-            message: "Password must be at least 6 characters"
-          }
+            message: "Password must be at least 6 characters",
+          },
         }}
         label="Password"
         secureTextEntry
         autoComplete="password"
       />
-      <Button
-        title="Submit"
-        size="md"
-        variant="primary"
-        onPress={onSubmit}
-      />
-      <Text>{translate("welcome")}</Text>
+      <Button title="Submit" size="md" variant="primary" onPress={onSubmit} />
     </WrapperContainer>
   );
 };

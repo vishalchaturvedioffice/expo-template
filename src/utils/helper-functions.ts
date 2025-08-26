@@ -1,8 +1,17 @@
 import { showMessage } from "react-native-flash-message";
+import { extractError } from "./utils";
 
 export const showError = (error: any) => {
   showMessage({
     message: error.message,
+    type: "danger",
+    icon: "danger",
+  });
+};
+
+export const showErrorResponse = (error: any) => {
+  showMessage({
+    message: extractError(error?.response?.data).trimEnd(),
     type: "danger",
     icon: "danger",
   });

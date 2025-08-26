@@ -101,6 +101,26 @@ type Theme = {
     hover: number;
     pressed: number;
   };
+  fontWeight: {
+    thin: string;
+    extraLight: string;
+    light: string;
+    normal: string;
+    medium: string;
+    semibold: string;
+    bold: string;
+    extraBold: string;
+    black: string;
+  };
+  fontFamily: {
+    poppins: {
+      regular: string;
+      medium: string;
+      bold: string;
+      extraBold: string;
+      black: string;
+    };
+  };
 };
 
 type AppThemes = {
