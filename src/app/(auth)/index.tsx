@@ -1,26 +1,25 @@
 // Configure Unistyles before creating any styles
-import { Button, Input } from "@/components";
+import { Button, Input, WrapperContainer } from "@/components";
 import Icons from "@/constants/icons";
 import "@/styles/unistyles/configure";
 import React from "react";
-import { View } from "react-native";
 import { StyleSheet } from "react-native-unistyles";
 
 const Page = () => {
   return (
-    <View style={styles.container}>
+    <WrapperContainer style={styles.container}>
       <Icons.logo width={100} height={100} />
-      <Input placeholder="Email" />
-      <Input placeholder="Password" />
+      <Input placeholder="Email" label="Email" />
+      <Input placeholder="Password" label="Password" error="Password is required" />
       <Button title="Login" size="md" variant="primary" onPress={() => {}} />
-    </View>
+    </WrapperContainer>
   );
 };
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
     justifyContent: "center",
-    // alignItems: "center",
+    alignItems: "center",
     padding: theme.spacing.md,
     backgroundColor: theme.colors.background,
     gap: theme.spacing.lg,

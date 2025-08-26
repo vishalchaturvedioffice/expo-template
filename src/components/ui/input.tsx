@@ -1,4 +1,4 @@
-import input_styles from "@/styles/components/ui/input.styles";
+import { input_styles as styles } from "@/styles";
 import React from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 import Text from "./text";
@@ -14,6 +14,10 @@ interface InputProps extends TextInputProps {
   endIcon?: React.ReactNode;
 }
 
+export interface InputState {
+  inputState: "default" | "focused";
+}
+
 const Input = ({
   placeholder,
   value,
@@ -25,22 +29,38 @@ const Input = ({
   endIcon,
   ...props
 }: InputProps) => {
+  const [inputState, setInputState] = React.useState<InputState>({
+    inputState: "default",
+  });
+
+  const handleFocus = () => {
+    setInputState({ inputState: "focused" });
+  };
+
+  const handleBlur = () => {
+    setInputState({ inputState: "default" });
+  };
+
   return (
-    <View style={input_styles.container}>
-      {label && <Text style={input_styles.label}>{label}</Text>}
-      <View style={input_styles.inputContainer}>
-        {icon && iconPosition === "left" && icon}
-        <TextInput
-          placeholder={placeholder}
-          value={value}
-          onChangeText={onChangeText}
-          style={input_styles.input}
-          {...props}
-        />
-        {icon && iconPosition === "right" && icon}
-        {endIcon && endIcon}
+    <View style={styles.topContainer}>
+      {label && <Text style={styles.label}>{label}</Text>}
+      <View style={styles.container(inputState)}>
+        <View style={styles.inputContainer}>
+          {icon && iconPosition === "left" && icon}
+          <TextInput
+            placeholder={placeholder}
+            value={value}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChangeText={onChangeText}
+            style={styles.input}
+            {...props}
+          />
+          {icon && iconPosition === "right" && icon}
+          {endIcon && endIcon}
+        </View>
       </View>
-      {error && <Text style={input_styles.error}>{error}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 };

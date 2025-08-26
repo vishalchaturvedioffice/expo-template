@@ -10,6 +10,7 @@ const styles = StyleSheet.create((theme) => ({
       justifyContent: "center",
       minHeight: 44,
       opacity: 1,
+      width: "100%",
     },
     contentContainer: {
       flexDirection: "row",
